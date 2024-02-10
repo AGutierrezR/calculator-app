@@ -1,19 +1,20 @@
-/** @type {import('tailwindcss').Config} */
 const plugin = require('tailwindcss/plugin')
 const postcss = require('postcss')
 const postcssJs = require('postcss-js')
 
 const {
-  colors,
   fontSize,
   fontFamily,
   spacing,
 } = require('./src/css-utils/process-tokens.cjs')
 
 module.exports = {
-  content: ['./*.html', './src/main.js'],
+  content: ['./*.html', './src/main.js', './src/lit/**/*.js'],
   theme: {
-    colors,
+    colors: {
+      base: 'var(--color-base)',
+      inverted: 'var(--color-inverted)'
+    },
     fontSize,
     fontFamily,
     fontWeight: {
@@ -21,13 +22,29 @@ module.exports = {
       bold: 700,
       black: 800,
     },
-    backgroundColor: ({ theme }) => theme('colors'),
+    backgroundColor: {
+      main: 'var(--bg-main)',
+      toggle: 'var(--bg-toggle)',
+      keypad: 'var(--bg-keypad)',
+      screen: 'var(--bg-screen)',
+      'support-1': 'var(--bg-support-1)',
+      'support-2': 'var(--bg-support-2)',
+      'support-3': 'var(--bg-support-3)'
+    },
+    boxShadowColor: {
+      'support-1': 'var(--shadow-support-1)',
+      'support-2': 'var(--shadow-support-2)',
+      'support-3': 'var(--shadow-support-3)'
+    },
     textColor: ({ theme }) => theme('colors'),
     margin: ({ theme }) => ({
       auto: 'auto',
       ...theme('spacing'),
     }),
     padding: ({ theme }) => theme('spacing'),
+    boxShadow: {
+      DEFAULT: 'inset 0px -4px 0px transparent',
+    },
     extend: {
       spacing
     }
