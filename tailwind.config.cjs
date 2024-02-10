@@ -12,8 +12,10 @@ module.exports = {
   content: ['./*.html', './src/main.js', './src/lit/**/*.js'],
   theme: {
     colors: {
-      base: 'var(--color-base)',
-      inverted: 'var(--color-inverted)'
+      'main': 'var(--color-main)',
+      'support-1': 'var(--color-support-1)',
+      'support-2': 'var(--color-support-2)',
+      'support-3': 'var(--color-support-3)',
     },
     fontSize,
     fontFamily,

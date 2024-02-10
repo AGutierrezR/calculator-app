@@ -24,18 +24,17 @@ class Header extends Component {
 
   render() {
     const offset = { '--offset': `${themes.indexOf(this.currentTheme) * 23}px` }
+
     return html`
       <div class="repel no-wrap items-end">
-        <h2 class="text-xl leading-7 tracking-tight ml-2">calc</h2>
-        <div class="cluster items-end gap-[1.625rem] text-sm leading-3 ">
-          <p class="uppercase mb-[.3125rem]">THEME</p>
+        <h2 class="text-xl ml-2 leading-7 tracking-tight">calc</h2>
+        <div class="cluster text-sm items-end gap-[1.625rem] leading-3 ">
+          <p class="mb-[.3125rem] uppercase">THEME</p>
           <div class="flex flex-col gap-1">
             <div class="flex justify-between gap-3 px-[10px]">
               ${themes.map((theme, index) => {
                 return html`
-                  <label class="text-center" for=${theme}
-                    >${index}</label
-                  >
+                  <label class="text-center" for=${theme}>${index + 1}</label>
                 `
               })}
             </div>
