@@ -12,10 +12,10 @@ module.exports = {
   content: ['./*.html', './src/main.js', './src/lit/**/*.js'],
   theme: {
     colors: {
-      'main': 'var(--color-main)',
-      'support-1': 'var(--color-support-1)',
-      'support-2': 'var(--color-support-2)',
-      'support-3': 'var(--color-support-3)',
+      main: 'hsl(var(--color-main) / <alpha-value>) ',
+      'support-1': 'hsl(var(--color-support-1) / <alpha-value>)',
+      'support-2': 'hsl(var(--color-support-2) / <alpha-value>)',
+      'support-3': 'hsl(var(--color-support-3) / <alpha-value>)',
     },
     fontSize,
     fontFamily,
@@ -25,18 +25,18 @@ module.exports = {
       black: 800,
     },
     backgroundColor: {
-      main: 'var(--bg-main)',
-      toggle: 'var(--bg-toggle)',
-      keypad: 'var(--bg-keypad)',
-      screen: 'var(--bg-screen)',
-      'support-1': 'var(--bg-support-1)',
-      'support-2': 'var(--bg-support-2)',
-      'support-3': 'var(--bg-support-3)'
+      main: 'hsl(var(--bg-main) / <alpha-value>)',
+      toggle: 'hsl(var(--bg-toggle) / <alpha-value>)',
+      keypad: 'hsl(var(--bg-keypad) / <alpha-value>)',
+      screen: 'hsl(var(--bg-screen) / <alpha-value>)',
+      'support-1': 'hsl(var(--bg-support-1) / <alpha-value>)',
+      'support-2': 'hsl(var(--bg-support-2) / <alpha-value>)',
+      'support-3': 'hsl(var(--bg-support-3) / <alpha-value>)',
     },
     boxShadowColor: {
-      'support-1': 'var(--shadow-support-1)',
-      'support-2': 'var(--shadow-support-2)',
-      'support-3': 'var(--shadow-support-3)'
+      'support-1': 'hsl(var(--shadow-support-1))',
+      'support-2': 'hsl(var(--shadow-support-2))',
+      'support-3': 'hsl(var(--shadow-support-3))',
     },
     textColor: ({ theme }) => theme('colors'),
     margin: ({ theme }) => ({
@@ -48,8 +48,8 @@ module.exports = {
       DEFAULT: 'inset 0px -4px 0px transparent',
     },
     extend: {
-      spacing
-    }
+      spacing,
+    },
   },
   plugins: [
     plugin(function ({ addComponents, config }) {
@@ -92,4 +92,3 @@ module.exports = {
     }),
   ],
 }
-
