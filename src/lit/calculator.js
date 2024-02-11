@@ -1,10 +1,13 @@
 import { Component, html } from './components/base'
-import './components/Header';
+import { Screen } from './components/Screen'
 
 class CalculatorApp extends Component {
   render() {
     return html`
-      <calculator-header></calculator-header>
+      <div class="flow">
+        <calculator-header></calculator-header>
+        ${Screen({ input: 180 })} 
+      </div>
     `
   }
 }
