@@ -7,6 +7,7 @@ class CalculatorApp extends Component {
       <div class="flow">
         <calculator-header></calculator-header>
         ${Screen({ input: 180 })} 
+        ${Keypad()}
       </div>
     `
   }
