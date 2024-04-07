@@ -1,9 +1,16 @@
 import { html } from 'lit-html'
 import { Button } from './Button'
+import { OPERATOR } from '../../utils'
 
-export function Keypad({ appendValue, removeValue }) {
+export function Keypad({
+  appendValue,
+  removeValue,
+  reset,
+  setOperator,
+  showResult,
+}) {
   return html`
-    <div class="grid grid-cols-4 gap-4 bg-keypad p-5">
+    <div class="grid grid-cols-4 gap-4 rounded-[.625rem] bg-keypad p-5">
       <span class="sr-only">Keypad</span>
       ${[7, 8, 9].map((value) => {
         return html`
@@ -34,6 +41,7 @@ export function Keypad({ appendValue, removeValue }) {
       })}
       ${Button({
         text: '+',
+        onClick: () => setOperator(OPERATOR.ADD),
       })}
       ${[1, 2, 3].map((value) => {
         return html`
@@ -48,6 +56,7 @@ export function Keypad({ appendValue, removeValue }) {
       })}
       ${Button({
         text: '-',
+        onClick: () => setOperator(OPERATOR.SUBTRACT),
       })}
       ${Button({
         text: '.',
@@ -55,23 +64,27 @@ export function Keypad({ appendValue, removeValue }) {
       })}
       ${Button({
         text: 0,
-        onClick: (v) => appendValue(v.toString()),
+        onClick: (v) => appendValue(v),
       })}
       ${Button({
         text: '/',
+        onClick: (v) => setOperator(OPERATOR.DIVIDE),
       })}
       ${Button({
         text: 'x',
+        onClick: (v) => setOperator(OPERATOR.MULTIPLY),
       })}
       ${Button({
         color: 'support-1',
         text: 'Reset',
         span: true,
+        onClick: () => reset(),
       })}
       ${Button({
         color: 'support-2',
         text: '=',
         span: true,
+        onClick: () => showResult(),
       })}
     </div>
   `
