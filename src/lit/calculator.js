@@ -10,7 +10,7 @@ export class CalculatorApp extends Component {
     operator: { type: String },
     savedInput: { type: String },
     isOperatorSwitched: { type: Boolean },
-    error: { type: String}
+    error: { type: String },
   }
 
   constructor() {
@@ -24,7 +24,12 @@ export class CalculatorApp extends Component {
 
   appendValue(value) {
     const MAX_INPUT_LENGTH = 15
-    if (this.input.length >= MAX_INPUT_LENGTH && !this.isOperatorSwitched && !this.error) return
+    if (
+      this.input.length >= MAX_INPUT_LENGTH &&
+      !this.isOperatorSwitched &&
+      !this.error
+    )
+      return
 
     this.input = formatValue(
       this.isOperatorSwitched && value !== '.' ? value : this.input + value,
@@ -34,7 +39,7 @@ export class CalculatorApp extends Component {
   }
 
   removeValue() {
-    if(this.error || this.isOperatorSwitched) return 
+    if (this.error || this.isOperatorSwitched) return
     const isValue = this.input.length > 1 && Number.isFinite(Number(this.input))
     this.input = isValue ? this.input.slice(0, -1) : '0'
   }
@@ -99,7 +104,7 @@ export class CalculatorApp extends Component {
           input: this.input,
           savedInput: this.savedInput,
           operator: this.operator,
-          error: this.error
+          error: this.error,
         })}
         ${Keypad({
           appendValue: (v) => this.appendValue(v.toString()),

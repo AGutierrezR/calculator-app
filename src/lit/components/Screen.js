@@ -6,7 +6,7 @@ export function Screen({ input, savedInput, operator, error }) {
 
   return html`
     <div
-      class="mt-8 relative rounded-[.625rem] bg-screen px-6 pb-[1.375rem] pt-7 text-right"
+      class="mt-8 relative rounded-[.625rem] bg-screen px-6 pb-6-9 pt-7-10 text-right"
     >
       <span class="sr-only">Result</span>
       ${operator &&
@@ -16,7 +16,7 @@ export function Screen({ input, savedInput, operator, error }) {
         </div>
       `}
       <output
-        class="flex justify-end overflow-hidden text-2xl leading-[2.375rem]"
+        class="flex justify-end overflow-hidden text-2xl leading-[.925]"
         style=${styleMap({
           fontSize:
             input.length > 10
