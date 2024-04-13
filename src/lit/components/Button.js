@@ -1,25 +1,44 @@
 import { html } from 'lit-html'
+import { TailwindElement } from './Tailwind.element'
+import styles from './Button.css?inline'
+import { unsafeCSS } from 'lit'
 
 const colorClasses = {
   'support-1': 'bg-support-1 text-support-1 shadow-support-1 text-md uppercase',
-  'support-2':
-    'bg-support-2 text-support-2 shadow-support-2 min-h-[56px] text-md uppercase',
-  'support-3':
-    'bg-support-3 text-support-3 shadow-support-3 min-h-[56px] p-3 pb-3 text-xl',
+  'support-2': 'bg-support-2 text-support-2 shadow-support-2 text-md uppercase',
+  'support-3': 'bg-support-3 text-support-3 shadow-support-3 text-xl',
 }
 
-export function Button({ color = 'support-3', text, span = false, ...props }) {
-  const handleClick = () => props.onClick(text)
+class ButtonComponent extends TailwindElement() {
+  static get properties() {
+    return {
+      color: { type: String },
+      value: { type: String },
+    }
+  }
 
-  return html`
-    <button
-      @click=${() => handleClick()}
-      class="${colorClasses[color]} ${span
-        ? `col-span-2`
-        : ''} rounded-lg p-3 shadow"
-      value="${text}"
-    >
-      ${text}
-    </button>
-  `
+  static get styles() {
+    return [...super.styles, unsafeCSS(styles)]
+  }
+
+  constructor() {
+    super()
+    this.color = 'support-3'
+    this.value = ''
+  }
+
+  render() {
+    return html`
+      <button
+        class="${colorClasses[
+          this.color
+        ]} w-full rounded-lg px-3 font-base font-bold shadow"
+        value=${this.value}
+      >
+        <slot></slot>
+      </button>
+    `
+  }
 }
+
+customElements.define('cal-button', ButtonComponent)

@@ -1,8 +1,8 @@
 import { calculate, formatValue } from '../utils'
 import { Component, html } from './components/base'
 import './components/Header'
-import { Keypad } from './components/Keypad'
-import { Screen } from './components/Screen'
+import './components/Screen'
+import './components/Keypad'
 
 export class CalculatorApp extends Component {
   static properties = {
@@ -99,20 +99,22 @@ export class CalculatorApp extends Component {
   render() {
     return html`
       <div class="flow">
-        <calculator-header></calculator-header>
-        ${Screen({
-          input: this.input,
-          savedInput: this.savedInput,
-          operator: this.operator,
-          error: this.error,
-        })}
-        ${Keypad({
-          appendValue: (v) => this.appendValue(v.toString()),
-          removeValue: () => this.removeValue(),
-          reset: () => this.reset(),
-          setOperator: (o) => this.setOperator(o),
-          showResult: () => this.showResult(),
-        })}
+        <calc-header></calc-header>
+        <calc-screen
+          class="mt-8 block"
+          .input=${this.input}
+          .savedInput=${this.savedInput}
+          .operator=${this.operator}
+          .error=${this.error}
+        ></calc-screen>
+        <calc-keypad
+          class="block"
+          @appendvalue=${(v) => this.appendValue(v.detail)}
+          @removevalue=${() => this.removeValue()}
+          @reset=${() => this.reset()}
+          @setoperator=${(o) => this.setOperator(o.detail)}
+          @showresult=${() => this.showResult()}
+        ></calc-keypad>
       </div>
     `
   }

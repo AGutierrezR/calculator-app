@@ -61,4 +61,4 @@ class Header extends Component {
   }
 }
 
-customElements.define('calculator-header', Header)
+customElements.define('calc-header', Header)
