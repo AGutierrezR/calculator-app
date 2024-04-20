@@ -1,3 +1,9 @@
+/**
+ * Formats the input value by removing leading zeros and redundant decimal points.
+ * @param {string} input - The input value to be formatted.
+ * @param {boolean} isOperatorSelected - Flag indicating whether an operator is selected.
+ * @returns {string} - The formatted value.
+ */
 export function formatValue(input, isOperatorSelected) {
   return input.replace(/^0(?!\.)|(?<=\..*)\./g, isOperatorSelected ? '0' : '')
 }
@@ -9,6 +15,15 @@ export const OPERATOR = {
   DIVIDE: '/',
 }
 
+/**
+ * Performs arithmetic operations on two numbers based on the specified operator.
+ * @param {number|string} a - The first operand.
+ * @param {number|string} b - The second operand.
+ * @param {string} operator - The arithmetic operator. Should be one of: '+', '-', 'x', '/'.
+ * @returns {number} The result of the arithmetic operation, rounded to 10 decimal places.
+ * @throws {Error} If the operator is not supported or if there is an overflow during calculation.
+ * @throws {Error} If attempting to divide by zero.
+ */
 export function calculate(a, b, operator) {
   const numberA = Number(a)
   const numberB = Number(b)
