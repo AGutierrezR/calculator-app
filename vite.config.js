@@ -1,13 +1,13 @@
-import { resolve } from 'path'
+import { defineConfig } from 'vitest/config';
 
-export default {
+export default defineConfig({
   root: './',
   build: {
     outDir: './dist',
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
-          let extType = assetInfo.name.split('.').at(1)
+          let extType = assetInfo?.name?.split('.').at(1) || ''
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
             extType = 'img'
           }
@@ -20,4 +20,8 @@ export default {
       },
     },
   },
-}
+  test: {
+    globals: true,
+    environment: 'happy-dom'
+  }
+})
