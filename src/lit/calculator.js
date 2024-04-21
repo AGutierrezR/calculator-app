@@ -32,7 +32,7 @@ export class CalculatorApp extends Component {
       return
 
     this.input = formatValue(
-      this.isOperatorSwitched && value !== '.' ? value : this.input + value,
+      this.isOperatorSwitched ? value : this.input + value,
       this.isOperatorSwitched,
     )
     this.isOperatorSwitched = false
@@ -108,7 +108,7 @@ export class CalculatorApp extends Component {
           .error=${this.error}
         ></calc-screen>
         <calc-keypad
-          class="block"
+          class="block mt-6"
           @appendvalue=${(v) => this.appendValue(v.detail)}
           @removevalue=${() => this.removeValue()}
           @reset=${() => this.reset()}
