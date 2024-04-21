@@ -32,6 +32,9 @@ module.exports = {
       'support-1': 'hsl(var(--bg-support-1) / <alpha-value>)',
       'support-2': 'hsl(var(--bg-support-2) / <alpha-value>)',
       'support-3': 'hsl(var(--bg-support-3) / <alpha-value>)',
+      'support-1-hover': 'hsl(var(--bg-support-1-hover) / <alpha-value>)',
+      'support-2-hover': 'hsl(var(--bg-support-2-hover) / <alpha-value>)',
+      'support-3-hover': 'hsl(var(--bg-support-3-hover) / <alpha-value>)',
     },
     boxShadowColor: {
       'support-1': 'hsl(var(--shadow-support-1))',

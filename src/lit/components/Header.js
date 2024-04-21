@@ -46,7 +46,7 @@ class Header extends LitElement {
               })}
             </div>
             <div
-              class="relative flex h-[26px] w-[72px] cursor-pointer justify-between rounded-full bg-toggle *:cursor-pointer *:appearance-none before:absolute before:left-[5px] before:top-[5px] before:size-4 before:translate-x-[var(--offset)] before:rounded-full before:bg-support-2 before:transition-all"
+              class="relative flex h-[26px] w-[72px] cursor-pointer justify-between rounded-full bg-toggle *:cursor-pointer *:appearance-none before:absolute before:left-[5px] before:top-[5px] before:size-4 before:translate-x-[var(--offset)] before:rounded-full before:bg-support-2 hover:before:bg-support-2-hover before:transition-all"
               style=${styleMap(offset)}
             >
               ${themes.map((theme) => {
