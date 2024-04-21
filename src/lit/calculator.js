@@ -103,24 +103,22 @@ export class CalculatorApp extends LitElement {
 
   render() {
     return html`
-      <div>
-        <calc-header></calc-header>
-        <calc-screen
-          class="mt-8 block"
-          .input=${this.input}
-          .savedInput=${this.savedInput}
-          .operator=${this.operator}
-          .error=${this.error}
-        ></calc-screen>
-        <calc-keypad
-          class="mt-6 block"
-          @appendvalue=${(v) => this.appendValue(v.detail)}
-          @removevalue=${() => this.removeValue()}
-          @reset=${() => this.reset()}
-          @setoperator=${(o) => this.setOperator(o.detail)}
-          @showresult=${() => this.showResult()}
-        ></calc-keypad>
-      </div>
+      <calc-header></calc-header>
+      <calc-screen
+        class="mt-8 block"
+        .input=${this.input}
+        .savedInput=${this.savedInput}
+        .operator=${this.operator}
+        .error=${this.error}
+      ></calc-screen>
+      <calc-keypad
+        class="mt-6 block"
+        @appendvalue=${(v) => this.appendValue(v.detail)}
+        @removevalue=${() => this.removeValue()}
+        @reset=${() => this.reset()}
+        @setoperator=${(o) => this.setOperator(o.detail)}
+        @showresult=${() => this.showResult()}
+      ></calc-keypad>
     `
   }
 }
