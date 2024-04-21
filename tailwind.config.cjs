@@ -58,7 +58,6 @@ module.exports = {
       const currentConfig = config()
 
       const groups = [
-        { key: 'colors', prefix: 'color' },
         { key: 'spacing', prefix: 'space' },
         { key: 'fontSize', prefix: 'size' },
         { key: 'fontFamily', prefix: 'font' },

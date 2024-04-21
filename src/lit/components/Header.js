@@ -1,12 +1,19 @@
-import { Component, html, styleMap } from '../components/base'
+import { LitElement, html } from 'lit'
+import { styleMap } from 'lit/directives/style-map.js'
+import { tailwindStyles } from '../styles/Tailwind.styles'
+import { cluster, repel } from '../styles/utils'
 
 const themes = ['default', 'light', 'violet']
 
-class Header extends Component {
+class Header extends LitElement {
   static properties = {
     currentTheme: {
       type: String,
     },
+  }
+
+  static get styles() {
+    return [repel, cluster, tailwindStyles]
   }
 
   constructor() {
@@ -27,8 +34,8 @@ class Header extends Component {
 
     return html`
       <div class="repel no-wrap items-end">
-        <h2 class="text-xl ml-2 leading-7 tracking-tight">calc</h2>
-        <div class="cluster text-sm items-end gap-[1.625rem] leading-3 ">
+        <h2 class="ml-2 text-xl leading-7 tracking-tight">calc</h2>
+        <div class="cluster items-end gap-[1.625rem] text-sm leading-3 ">
           <p class="mb-[.3125rem] uppercase">THEME</p>
           <div class="flex flex-col gap-1">
             <div class="flex justify-between gap-3 px-[10px]">
@@ -39,7 +46,7 @@ class Header extends Component {
               })}
             </div>
             <div
-              class="before:bg-support-2 relative flex h-[26px] w-[72px] cursor-pointer justify-between rounded-full bg-toggle *:cursor-pointer *:appearance-none before:absolute before:left-[5px] before:top-[5px] before:size-4 before:translate-x-[var(--offset)] before:rounded-full before:transition-all"
+              class="relative flex h-[26px] w-[72px] cursor-pointer justify-between rounded-full bg-toggle *:cursor-pointer *:appearance-none before:absolute before:left-[5px] before:top-[5px] before:size-4 before:translate-x-[var(--offset)] before:rounded-full before:bg-support-2 before:transition-all"
               style=${styleMap(offset)}
             >
               ${themes.map((theme) => {

@@ -1,16 +1,21 @@
 import { calculate, formatValue } from '../utils'
-import { Component, html } from './components/base'
+import { LitElement, html } from 'lit'
+import { tailwindStyles } from './styles/Tailwind.styles'
 import './components/Header'
 import './components/Screen'
 import './components/Keypad'
 
-export class CalculatorApp extends Component {
+export class CalculatorApp extends LitElement {
   static properties = {
     input: { type: String },
     operator: { type: String },
     savedInput: { type: String },
     isOperatorSwitched: { type: Boolean },
     error: { type: String },
+  }
+
+  static get styles() {
+    return [tailwindStyles]
   }
 
   constructor() {
@@ -98,7 +103,7 @@ export class CalculatorApp extends Component {
 
   render() {
     return html`
-      <div class="flow">
+      <div>
         <calc-header></calc-header>
         <calc-screen
           class="mt-8 block"
@@ -108,7 +113,7 @@ export class CalculatorApp extends Component {
           .error=${this.error}
         ></calc-screen>
         <calc-keypad
-          class="block mt-6"
+          class="mt-6 block"
           @appendvalue=${(v) => this.appendValue(v.detail)}
           @removevalue=${() => this.removeValue()}
           @reset=${() => this.reset()}

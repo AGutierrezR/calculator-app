@@ -1,7 +1,7 @@
-import { html } from 'lit-html'
-import { TailwindElement } from './Tailwind.element'
+import { LitElement, html } from 'lit'
 import styles from './Button.css?inline'
 import { unsafeCSS } from 'lit'
+import { tailwindStyles } from '../styles/Tailwind.styles'
 
 const colorClasses = {
   'support-1': 'bg-support-1 text-support-1 shadow-support-1 text-md uppercase',
@@ -9,7 +9,7 @@ const colorClasses = {
   'support-3': 'bg-support-3 text-support-3 shadow-support-3 text-xl',
 }
 
-class ButtonComponent extends TailwindElement() {
+class ButtonComponent extends LitElement {
   static get properties() {
     return {
       color: { type: String },
@@ -18,7 +18,7 @@ class ButtonComponent extends TailwindElement() {
   }
 
   static get styles() {
-    return [...super.styles, unsafeCSS(styles)]
+    return [tailwindStyles, unsafeCSS(styles)]
   }
 
   constructor() {

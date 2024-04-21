@@ -1,8 +1,8 @@
-import { html } from 'lit-html'
-import { styleMap } from './base'
-import { TailwindElement } from './Tailwind.element'
+import { LitElement, html } from 'lit'
+import { styleMap } from 'lit/directives/style-map.js'
+import { tailwindStyles } from '../styles/Tailwind.styles'
 
-class ScreenComponent extends TailwindElement() {
+class ScreenComponent extends LitElement {
   static get properties() {
     return {
       operator: { type: String },
@@ -10,6 +10,10 @@ class ScreenComponent extends TailwindElement() {
       input: { type: String },
       error: { type: String },
     }
+  }
+
+  static get styles() {
+    return [tailwindStyles]
   }
 
   constructor() {
@@ -27,7 +31,7 @@ class ScreenComponent extends TailwindElement() {
 
     return html`
       <div
-        class="relative rounded-[.625rem] bg-screen px-6 pb-6-9 pt-7-10 text-right font-base"
+        class="relative flex min-h-[7.75rem] flex-row-reverse items-center rounded-[.625rem] bg-screen px-6 pb-6-9 pt-7-10 text-right font-base"
       >
         <span class="sr-only">Result</span>
         ${this.operator &&
@@ -46,7 +50,10 @@ class ScreenComponent extends TailwindElement() {
           })}
         >
           ${this.error ??
-          Number(this.input).toLocaleString('en-US', { minimumFractionDigits })}
+          Number(this.input === '.' ? '0' : this.input).toLocaleString(
+            'en-US',
+            { minimumFractionDigits },
+          )}
         </output>
       </div>
     `

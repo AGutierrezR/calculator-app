@@ -1,9 +1,13 @@
-import { html } from 'lit-html'
+import { LitElement, html } from 'lit'
 import './Button'
 import { OPERATOR } from '../../utils'
-import { TailwindElement } from './Tailwind.element'
+import { tailwindStyles } from '../styles/Tailwind.styles'
 
-class KeypadComponent extends TailwindElement() {
+class KeypadComponent extends LitElement {
+  static get styles() {
+    return [tailwindStyles]
+  }
+
   appendValue(value) {
     this.dispatchEvent(
       new CustomEvent('appendvalue', { detail: value.toString() }),
