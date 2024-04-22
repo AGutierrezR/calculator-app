@@ -49,7 +49,7 @@ class KeypadComponent extends LitElement {
         <cal-button color="support-1" @click=${() => this.removeValue()}
           >Del</cal-button
         >
-        ${[6, 5, 4].map((value) => {
+        ${[4, 5, 6].map((value) => {
           return html`
             <cal-button
               color="support-3"
